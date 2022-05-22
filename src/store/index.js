@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import menus from './moudles/menus'
 
 Vue.use(Vuex)
 
@@ -16,11 +17,12 @@ export default new Vuex.Store({
     },
     resetState: (state)=>{
       state.token=""
-      
+
     }
   },
   actions: {
   },
   modules: {
+    menus
   }
 })

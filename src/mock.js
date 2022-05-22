@@ -48,3 +48,72 @@ Mock.mock("/logout", 'post', (config) => {
   console.log("mock----------------logout")
   return Result
 })
+
+//动态菜单
+Mock.mock("/sys/menu/nav", 'get', (config) => {
+  //菜单json
+  let nav=[
+    {    
+      id: '1',
+      name: "SysManage",
+      title: "系统管理",
+      icon: 'el-icon-s-operation',
+      path: '',
+      component: '',
+      children: [
+        {
+          id: '2',
+          name: 'SysUser',
+          title: "用户管理",
+          icon: 'el-icon-s-operation',
+          path: '/sys/users',
+          component: 'sys/User',
+          children: []
+        },
+        {
+          id: '3',
+          name: 'SysRole',
+          title: "角色管理",
+          icon: 'el-icon-rank',
+          path: '/sys/roles',
+          component: 'sys/Role',
+          children: []
+        },
+        {
+          id: '4',
+          name: 'SysMenu',
+          title: "菜单管理",
+          icon: 'el-icon-menu',
+          path: '/sys/menus',
+          component: 'sys/Menu',
+          children: []
+        }
+      ]
+    },
+    {
+      id: '5',
+      name: "SysTools",
+      title: "系统工具",
+      icon: 'el-icon-s-tools',
+      path: '',
+      component: '',
+      children: [
+        {
+          id:'6',
+          name: 'SysDict',
+          title: "数字字典",
+          icon: 'el-icon-s-order',
+          path: '/sys/dicts',
+          component: 'sys/Dict',
+        }
+      ]    
+    }
+  ]
+  //权限数据
+  let authorities=["SysUser","SysUser:save"]
+
+  Result.data={}
+  Result.data.nav=nav
+  Result.data.authorities=authorities
+  return Result
+})
