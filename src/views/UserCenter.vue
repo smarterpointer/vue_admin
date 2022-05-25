@@ -1,5 +1,6 @@
 <template>
 <div style="text-align: center;">
+  <h2>你好！{{userInfo.username}}同学</h2>
   <el-form :model="passForm" status-icon :rules="rules" ref="passForm" label-width="100px">
     <el-form-item label="旧密码" prop="currentPass">
       <el-input type="password" v-model="passForm.currentPass" autocomplete="off"></el-input>

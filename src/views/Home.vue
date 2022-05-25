@@ -21,7 +21,7 @@
                   </span>
                   <!-- 下拉菜单 -->
                   <el-dropdown-menu slot="dropdown">
-                     <el-dropdown-item :underline="false">
+                     <el-dropdown-item :underline="false" >
                         <router-link :to="{name: 'UserCenter'}">个人中心</router-link>
                      </el-dropdown-item>
                      <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
@@ -34,7 +34,7 @@
          </el-header>
 
          <el-main>
-
+            <Tabs></Tabs>
             <div style="margin: 0 15px;">
                <router-view></router-view>
             </div>
@@ -46,6 +46,7 @@
 
 <script>
 import SideMenu from './helper/SideMenu.vue'
+import Tabs from './helper/Tabs.vue';
 export default{
    name: "Home.vue",
    data() {
@@ -57,7 +58,7 @@ export default{
          }
       };
    },
-   components: { SideMenu },
+   components: { SideMenu, Tabs },
    created(){
       this.getUserInfo()
    },
@@ -74,7 +75,7 @@ export default{
             this.$store.commit("resetState")
             this.$router.push("/login")
          })
-      }
+      },
    }
 
 }
@@ -117,7 +118,7 @@ export default{
    
     color: #333;
     text-align: center;
-    line-height: 160px;
+    /* line-height: 160px; */
   }
   
   .el-menu{

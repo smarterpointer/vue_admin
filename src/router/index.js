@@ -42,6 +42,9 @@ const routes = [
       {
         path: '/userCenter',
         name: 'UserCenter',
+        meta:{
+          title: "个人中心"
+        },
         component: ()=>import('@/views/UserCenter.vue')
       }
     ]

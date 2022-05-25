@@ -2,7 +2,7 @@
 <!--   @open="handleOpen"
     @close="handleClose"-->
   <el-menu 
-    default-active="2"
+    :default-active="this.$store.state.menus.editableTabsValue"
     class="el-menu-vertical-demo"   
     background-color="#545c64"
     text-color="#fff"
@@ -19,13 +19,13 @@
 
     <el-submenu default-active="Index" :index="menu.name" v-for="menu in menuList" :key='menu.name'>
         <template slot="title">
-          <i class="menu.icon"></i>
+          <i :class="menu.icon"></i>
           <span>{{menu.title}}</span>
         </template>
-        <router-link :to="item.path" v-for="item in menu.children" :key="item.id">
-          <el-menu-item :index="item.name">
+        <router-link :to="item.path" v-for="item in menu.children" :key="item.id" >
+          <el-menu-item :index="item.name" @click="selectMenu(item)">
           <template slot="title">
-            <i class="item.icon"></i>
+            <i :class="item.icon"></i>
             <span slot="title">{{item.title}}</span>
           </template>          
         </el-menu-item>
@@ -50,9 +50,14 @@
       }
     },
     methods:{
-      // selectMenu(item){
-      //   this.$store.commit("addTab",item)
-      // }
+      selectMenu(item){
+        console.log(item);
+        // let obj={
+        //   name:item.name,
+        //   title:item.title
+        // }
+        this.$store.commit("addTab",item)
+      }
     }
   }
 </script>
