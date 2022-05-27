@@ -8,6 +8,7 @@ import "element-ui/lib/theme-chalk/index.css"
 import request from './axios'
 //import axios from 'axios'
 import './mock.js'
+import global from "./globalFun"
 
 
 require("./mock")
